@@ -1,0 +1,21 @@
+[package]
+name = "evrika_db"
+version = "0.1.0"
+edition = "2021"
+description = "EvrikaDB — a Redis-compatible, disk-persisted LSM-tree key/value store written in pure Rust (no external deps)."
+
+# No external dependencies on purpose: the whole point of this project is to
+# implement the RESP protocol, the LSM-tree storage engine and the custom
+# binary serialization by hand, on top of `std` only.
+
+[[bin]]
+name = "evrika-server"
+path = "src/main.rs"
+
+[[bin]]
+name = "evrika-cli"
+path = "src/bin/cli.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
